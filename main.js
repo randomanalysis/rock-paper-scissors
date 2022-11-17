@@ -39,9 +39,44 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-const playerSelection = "rock";
-const computerSelection = getComputerSelection();
-console.log(playRound(playerSelection, computerSelection));
+
+function game() {
+    let playerScore = 0
+    let computerScore = 0
+    let roundResult
+    for (let i = 0; i < 5; i++) {
+        
+        computerSelection = getComputerSelection()
+        playerSelection = prompt("Please type your selection - 'Rock', 'Paper' or 'Scissors'")
+        
+        roundResult = playRound(playerSelection, computerSelection)
+
+        if (roundResult.includes("Win")) {
+            playerScore ++
+        } else if (roundResult.includes("Lose")) {
+            computerScore ++
+        }
+
+        if (i < 4) {
+
+        alert(roundResult + "\n\nThe score is Player: " + playerScore.toString() + ", Computer: " + computerScore.toString())
+        } else {
+            let finalResult
+            if (computerScore ==  playerScore) {
+                finalResult = "A Draw!"
+            } else if (computerScore > playerScore) {
+                finalResult = "You Lose!"
+            } else {
+                finalResult = "You Win!"
+            }
+
+            alert(roundResult + "\n\nThe final score is Player: " + playerScore.toString() + ", Computer: " + computerScore.toString() + "\n\n" + finalResult)
+        }
+    }
+    
+}
+
+game()
 
 
 
